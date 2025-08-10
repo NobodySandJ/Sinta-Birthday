@@ -1,0 +1,55 @@
+{
+  "personalGreeting": "Happy Birthday, Sinta!",
+  "personalMessage": "Semangatmu itu lho, bikin kita semua ikut ceria! Terima kasih sudah menjadi sumber kebahagiaan yang nggak ada habisnya. Semoga di hari spesialmu ini, kamu mendapatkan semua hal terbaik di dunia.",
+  "personalSignature": "Dengan tulus, Ferdy (@ikifer)",
+  "timelineItems": [
+    {
+      "year": "2023",
+      "title": "Awal Mula Perjalanan",
+      "description": "Pertama kali melihat penampilanmu dan langsung terkesan dengan energi positif yang kamu pancarkan."
+    },
+    {
+      "year": "2024",
+      "title": "Momen Handshake Pertama",
+      "description": "Momen tak terlupakan saat bisa bertemu dan berbicara langsung denganmu untuk pertama kalinya. Gugup tapi senang!"
+    },
+    {
+      "year": "2025",
+      "title": "Hari Spesial Ini",
+      "description": "Hari ini, di ulang tahunmu, kami semua merayakan kehadiranmu yang membawa banyak warna. Teruslah bersinar!"
+    }
+  ],
+  "playlist": [
+    {
+      "title": "Rapsodi",
+      "artist": "JKT48",
+      "path": "assets/audio/rapsodi.mp3",
+      "artwork": "assets/img/album_rapsodi.jpg"
+    },
+    {
+      "title": "Seventeen",
+      "artist": "JKT48",
+      "path": "assets/audio/seventeen.mp3",
+      "artwork": "assets/img/album_seventeen.jpg"
+    }
+  ],
+  "galleryImages": [
+    "sinta.jpg",
+    "sinta2.jpg",
+    "group2.jpg"
+  ],
+  "videos": [
+    {
+      "title": "Momen Panggung Terbaik",
+      "url": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+    },
+    {
+      "title": "Kompilasi Momen Lucu",
+      "url": "https://www.youtube.com/embed/L_jWHffIx5E"
+    },
+    {
+      "title": "Pesan Spesial",
+      "url": "https://www.youtube.com/embed/Vq_g-4G5sJ8"
+    }
+  ]
+}
