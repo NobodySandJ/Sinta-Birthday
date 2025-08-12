@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun, Sinta!</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎀</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Pacifico&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="with-player">
+    <div class="progress-bar" id="progress-bar"></div>
+
+    <div id="background-animation"></div>
+
+    <main id="main-content">
+        <section id="lottie-section" class="fade-in-up">
+            <dotlottie-wc src="https://lottie.host/5f089ce5-d66c-4b52-91cb-292456503ce2/PTf0Sn1cF8.lottie" style="width: 300px;height: 300px" speed="1" autoplay loop></dotlottie-wc>
+        </section>
+
+        <section id="personal-message-section" class="fade-in-up">
+            <div class="message-card">
+                <div id="personal-greeting">
+                    <span id="greeting-line-1"></span>
+                    <span id="greeting-line-2"></span>
+                </div>
+                <p id="personal-message"></p>
+                <p id="personal-signature"></p>
+            </div>
+        </section>
+
+        <section id="timeline-section" class="fade-in-up">
+            <h2 class="section-title">Jejak Memori ✨</h2>
+            <div id="timeline-container" class="timeline"></div>
+        </section>
+
+        <section id="gallery-section" class="fade-in-up">
+            <h2 class="section-title">Galeri Momen Indah 📸</h2>
+            <div id="photo-gallery" class="gallery-grid"></div>
+        </section>
+
+        <section id="video-section" class="fade-in-up">
+            <h2 class="section-title">Kompilasi Video Kenangan 🎬</h2>
+            <div id="video-list" class="video-grid"></div>
+        </section>
+
+        <footer class="fade-in-up">
+            <p>birthday project by Ferdy (@ikifer)</p>
+            <p style="margin-top: 10px; font-size: 0.85rem;">Maap kan ke freaky an ku ya,wkwwk</p>
+        </footer>
+    </main>
+
+    <div id="music-player">
+        <div class="player-container">
+            <img id="player-artwork" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjYwIiByeD0iMTIiIGZpbGw9InVybCgjZ3JhZGllbnQpIi8+CjxwYXRoIGQ9Ik0yNCAyMkwyNCAzOEwzNiAzMEwyNCAyMloiIGZpbGw9IndoaXRlIi8+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50IiB4MT0iMCIgeTE9IjAiIHgyPSI2MCIgeTI9IjYwIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNmZjZiOWQiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmY4ZmFiIi8+CjwvbGluZWFyR3JhZGllbnQ+CjwvZGVmcz4KPC9zdmc+" alt="Album Art">
+            <div class="player-info">
+                <p id="player-title">Pilih Lagu</p>
+                <p id="player-artist">Untuk memulai</p>
+            </div>
+            <div class="player-controls">
+                <button id="prev-btn" aria-label="Previous Track"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 18V6H16V18H18ZM8 12L14 6V18L8 12Z" fill="currentColor"/></svg></button>
+                <button id="play-pause-btn" aria-label="Play or Pause Track"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 5V19L19 12L8 5Z" fill="currentColor"/></svg></button>
+                <button id="next-btn" aria-label="Next Track"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6V18H8V6H6ZM16 12L10 18V6L16 12Z" fill="currentColor"/></svg></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="lightbox" class="lightbox" role="dialog" aria-label="Image Viewer">
+        <span class="lightbox-close" aria-label="Close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" alt="Full size image">
+    </div>
+
+    <audio id="audio-element" preload="metadata"></audio>
+    
+    <script src="script.js"></script>
+</body>
+</html>

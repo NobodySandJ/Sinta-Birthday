@@ -1,55 +1,58 @@
 {
-  "personalGreeting": "Happy Birthday, Sinta!",
-  "personalMessage": "Semangatmu itu lho, bikin kita semua ikut ceria! Terima kasih sudah menjadi sumber kebahagiaan yang nggak ada habisnya. Semoga di hari spesialmu ini, kamu mendapatkan semua hal terbaik di dunia.",
-  "personalSignature": "Dengan tulus, Ferdy (@ikifer)",
-  "timelineItems": [
-    {
-      "year": "2023",
-      "title": "Awal Mula Perjalanan",
-      "description": "Pertama kali melihat penampilanmu dan langsung terkesan dengan energi positif yang kamu pancarkan."
-    },
-    {
-      "year": "2024",
-      "title": "Momen Handshake Pertama",
-      "description": "Momen tak terlupakan saat bisa bertemu dan berbicara langsung denganmu untuk pertama kalinya. Gugup tapi senang!"
-    },
-    {
-      "year": "2025",
-      "title": "Hari Spesial Ini",
-      "description": "Hari ini, di ulang tahunmu, kami semua merayakan kehadiranmu yang membawa banyak warna. Teruslah bersinar!"
-    }
-  ],
-  "playlist": [
-    {
-      "title": "Rapsodi",
-      "artist": "JKT48",
-      "path": "assets/audio/rapsodi.mp3",
-      "artwork": "assets/img/album_rapsodi.jpg"
-    },
-    {
-      "title": "Seventeen",
-      "artist": "JKT48",
-      "path": "assets/audio/seventeen.mp3",
-      "artwork": "assets/img/album_seventeen.jpg"
-    }
-  ],
-  "galleryImages": [
-    "sinta.jpg",
-    "sinta2.jpg",
-    "group2.jpg"
-  ],
-  "videos": [
-    {
-      "title": "Momen Panggung Terbaik",
-      "url": "https://www.youtube.com/embed/dQw4w9WgXcQ"
-    },
-    {
-      "title": "Kompilasi Momen Lucu",
-      "url": "https://www.youtube.com/embed/L_jWHffIx5E"
-    },
-    {
-      "title": "Pesan Spesial",
-      "url": "https://www.youtube.com/embed/Vq_g-4G5sJ8"
-    }
-  ]
+    "personalGreeting": "Happy Birthday, Sinta!",
+    "personalMessage": "Semangatmu itu lho, bikin kita semua ikut ceria! Terima kasih sudah menjadi sumber kebahagiaan yang nggak ada habisnya. Semoga di hari spesialmu ini, kamu mendapatkan semua hal terbaik di dunia.",
+    "personalSignature": "Dengan tulus, Ferdy (@ikifer)",
+    "timelineItems": [
+        {
+            "year": "26 April 2024",
+            "title": "Awal Mula Cerita Baru",
+            "description": "Hari di mana kamu resmi diumumkan sebagai member baru Refresh Breeze! Sebuah awal dari perjalanan yang luar biasa.",
+            "image": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDQwMCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiMzNDM0NTIiIHJ4PSIxMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjYjBiMGM0IiBmb250LXNpemU9IjI0IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiI+Foto Pengumuman Member</text></svg>"
+        },
+        {
+            "year": "28 April 2024",
+            "title": "Debut Panggung Pertama",
+            "description": "Untuk pertama kalinya, kamu tampil memukau di event 'Onymyouji No Matsuri' Kediri. Energi dan senyummu langsung mencuri perhatian!",
+            "image": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDQwMCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiMzNDM0NTIiIHJ4PSIxMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjYjBiMGM0IiBmb250LXNpemU9IjI0IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiI+Foto Debut di Kediri</text></svg>"
+        },
+        {
+            "year": "21 Juni 2025",
+            "title": "Bersinar di Chibicon!",
+            "description": "Penampilan terbaikmu dengan ishou (kostum) baru yang keren di panggung Chibicon Day 1. Kamu benar-benar bersinar!",
+            "image": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDQwMCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiMzNDM0NTIiIHJ4PSIxMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjYjBiMGM0IiBmb250LXNpemU9IjI0IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiI+Foto di Chibicon</text></svg>"
+        }
+    ],
+    "playlist": [
+        {
+            "title": "Rapsodi",
+            "artist": "JKT48",
+            "path": "#demo1",
+            "artwork": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDMwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiByeD0iMjAiIGZpbGw9InVybCgjZ3JhZGllbnQxKSIvPgo8Y2lyY2xlIGN4PSIxNTAiIGN5PSIxNTAiIHI9IjgwIiBmaWxsPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMikiLz4KPHN2ZyB4PSIxMjAiIHk9IjEyMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjYwIj4KPHA+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMjAiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjgiLz48L3A+CjwvcG9seWdvbiBwb2ludHM9IjI0LDIwIDI0LDQwIDQwLDMwIiBmaWxsPSIjZmY2YjlkIi8+Cjwvc3ZnPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJncmFkaWVudDEiIHgxPSIwIiB5MT0iMCIgeDI9IjMwMCIgeTI9IjMwMCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjZmY2YjlkIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzRlY2RjNCIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjwvc3ZnPg=="
+        },
+        {
+            "title": "Seventeen", 
+            "artist": "JKT48",
+            "path": "#demo2",
+            "artwork": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDMwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiByeD0iMjAiIGZpbGw9InVybCgjZ3JhZGllbnQyKSIvPgo8Y2lyY2xlIGN4PSIxNTAiIGN5PSIxNTAiIHI9IjYwIiBmaWxsPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMSkiLz4KPHN2ZyB4PSIxMzAiIHk9IjEzMCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIj4KPHA+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMTUiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjciLz48L3A+CjwvcG9seWdvbiBwb2ludHM9IjE2LDE0IDE2LDI2IDI2LDIwIiBmaWxsPSIjNGVjZGM0Ii8+Cjwvc3ZnPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJncmFkaWVudDIiIHgxPSIwIiB5MT0iMCIgeDI9IjMwMCIgeTI9IjMwMCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjNGVjZGM0Ii8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2ZmOGZhYiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjwvc3ZnPg=="
+        }
+    ],
+    "galleryImages": [
+        "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiByeD0iMjAiIGZpbGw9InVybCgjZ3JhZDEpIi8+Cjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ3aGl0ZSIgZm9udC1zaXplPSIyNCIgZm9udC1mYW1pbHk9IlBvcHBpbnMiPvCfk7ggRm90byBTaW50YSAx8J+TuDwvdGV4dD4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZDEiIHgxPSIwIiB5MT0iMCIgeDI9IjQwMCIgeTI9IjMwMCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjZmY2YjlkIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzRlY2RjNCIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjwvc3ZnPg==",
+        "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiByeD0iMjAiIGZpbGw9InVybCgjZ3JhZDIpIi8+Cjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ3aGl0ZSIgZm9udC1zaXplPSIyNCIgZm9udC1mYW1pbHk9IlBvcHBpbnMiPvCfk7ggRm90byBTaW50YSAy8J+TuDwvdGV4dD4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZDIiIHgxPSIwIiB5MT0iMCIgeDI9IjQwMCIgeTI9IjMwMCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjNGVjZGM0Ii8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2E4ODY3OSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjwvc3ZnPg==",
+        "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiByeD0iMjAiIGZpbGw9InVybCgjZ3JhZDMpIi8+Cjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ3aGl0ZSIgZm9udC1zaXplPSIyNCIgZm9udC1mYW1pbHk9IlBvcHBpbnMiPvCfkY4gR3JvdXAgUGhvdG8g8J+RjjwvdGV4dD4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZDMiIHgxPSIwIiB5MT0iMCIgeDI9IjQwMCIgeTI9IjMwMCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjZTkxZTYzIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzY3M2FiNyIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjwvc3ZnPg=="
+    ],
+    "videos": [
+        {
+            "title": "Momen Panggung Terbaik",
+            "url": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+        },
+        {
+            "title": "Kompilasi Momen Lucu", 
+            "url": "https://www.youtube.com/embed/L_jWHffIx5E"
+        },
+        {
+            "title": "Pesan Spesial",
+            "url": "https://www.youtube.com/embed/Vq_g-4G5sJ8"
+        }
+    ]
 }

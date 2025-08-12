@@ -4,102 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selamat Ulang Tahun, Sinta!</title>
-    <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎀</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Pacifico&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="with-player">
+<body>
 
-    <div id="background-animation"></div>
-
-    <div id="welcome-screen">
+    <div id="welcome-screen" style="opacity: 1; transform: scale(1);">
         <div class="welcome-content">
             <div id="year-selector-view">
                 <h2>Tahun Lahir Kamu? 🤔</h2>
                 <div class="slider-container">
-                    <input type="range" min="2000" max="2010" value="2008" class="slider" id="birthyear-slider">
-                    <p id="year-display">2008</p>
+                    <input type="range" min="2000" max="2010" value="2006" class="slider" id="birthyear-slider">
+                    <p id="year-display">2006</p>
                 </div>
-
                 <div class="color-picker-container">
                     <label>Pilih Warna Temamu:</label>
                     <div id="theme-options" class="theme-options-container">
-                        <div class="theme-option selected" data-color="#a88679" style="background-color: #a88679;"></div>
-                        <div class="theme-option" data-color="#e91e63" style="background-color: #e91e63;"></div>
-                        <div class="theme-option" data-color="#673ab7" style="background-color: #673ab7;"></div>
-                        <div class="theme-option" data-color="#00bcd4" style="background-color: #00bcd4;"></div>
                         <div class="theme-option" data-color="#4caf50" style="background-color: #4caf50;"></div>
+                        <div class="theme-option selected" data-color="#ff6b9d" style="background-color: #ff6b9d;"></div>
+                        <div class="theme-option" data-color="#673ab7" style="background-color: #673ab7;"></div>
+                        <div class="theme-option" data-color="#e91e63" style="background-color: #e91e63;"></div>
+                        <div class="theme-option" data-color="#ff9800" style="background-color: #ff9800;"></div>
+                        <div class="theme-option" data-color="#00bcd4" style="background-color: #00bcd4;"></div>
                     </div>
                 </div>
-
-                <div id="gift-box" role="button" aria-label="Buka Hadiah">
-                    <div class="gift-lid"></div>
-                    <div class="gift-body"></div>
+                <div id="lottie-gift-container">
+                     <dotlottie-wc 
+                        src="https://lottie.host/b5289d12-8de3-4b08-bce2-32c94b642be0/kt2iTQozjP.lottie" 
+                        style="width: 250px; height: 250px; cursor: pointer;" 
+                        speed="1" 
+                        autoplay 
+                        loop>
+                    </dotlottie-wc>
                 </div>
-                <p class="gift-instruction">Klik kado untuk melanjutkan!</p>
+                <p class="gift-instruction">Klik kado untuk melanjutkan! ✨</p>
             </div>
         </div>
     </div>
 
-    <main id="main-content">
-        <section id="cake-section">
-            <div id="cake-container">
-                <svg id="cake-svg" viewBox="0 0 200 500">
-                    </svg>
-            </div>
-        </section>
+    <script src="script.js"></script>
 
-        <section id="personal-message-section">
-            <div class="message-card">
-                <div id="personal-greeting">
-                    <span id="greeting-line-1"></span>
-                    <span id="greeting-line-2"></span>
-                </div>
-                <p id="personal-message"></p>
-                <p id="personal-signature"></p>
-            </div>
-        </section>
-
-        <section id="timeline-section">
-            <h2 class="section-title">Jejak Memori</h2>
-            <div id="timeline-container" class="timeline"></div>
-        </section>
-
-        <section id="gallery-section">
-            <h2 class="section-title">Galeri Momen Indah</h2>
-            <div id="photo-gallery" class="gallery-grid"></div>
-        </section>
-
-        <section id="video-section">
-            <h2 class="section-title">Kompilasi Video Kenangan</h2>
-            <div id="video-list" class="video-grid"></div>
-        </section>
-
-        <footer>
-            <p>A birthday project by Ferdy (@ikifer) ❤️</p>
-        </footer>
-    </main>
-
-    <div id="music-player">
-        <div class="player-container">
-            <img id="player-artwork" src="" alt="Album Art">
-            <div class="player-info">
-                <p id="player-title">Pilih Lagu</p>
-                <p id="player-artist">Untuk memulai</p>
-            </div>
-            <div class="player-controls">
-                <button id="prev-btn" aria-label="Previous Track"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 18V6H16V18H18ZM8 12L14 6V18L8 12Z" fill="currentColor"/></svg></button>
-                <button id="play-pause-btn" aria-label="Play or Pause Track"></button>
-                <button id="next-btn" aria-label="Next Track"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6V18H8V6H6ZM16 12L10 18V6L16 12Z" fill="currentColor"/></svg></button>
-            </div>
-        </div>
-    </div>
-
-    <div id="lightbox" class="lightbox">
-        <span class="lightbox-close">&times;</span>
-        <img class="lightbox-content" id="lightbox-img">
-    </div>
-
-    <audio id="audio-element"></audio>
-    <script src="script.js" defer></script>
 </body>
 </html>
