@@ -46,7 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===================================================================
     if (document.getElementById('main-content') && !document.getElementById('welcome-screen')) {
         
-        const appState = { content: {} };
+        const appState = { 
+            content: {},
+            hasInteracted: false // Lacak interaksi pengguna
+        };
 
         const elements = {
             root: document.documentElement,
@@ -73,14 +76,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const utils = {
             async typewriter(element, text, delay = 80) {
-                // Kosongkan elemen sebelum memulai
                 element.innerHTML = '';
                 element.classList.add('typing');
                 for (let i = 0; i < text.length; i++) {
                     element.innerHTML = text.substring(0, i + 1) + '<span class="cursor">|</span>';
                     await new Promise(resolve => setTimeout(resolve, delay));
                 }
-                // Hapus kursor setelah selesai
                 setTimeout(() => {
                     element.innerHTML = text;
                     element.classList.remove('typing');
@@ -161,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const musicPlayer = {
             init() {
-                if (appState.content.playlist?.length) this.loadTrack(0, true); // Diubah ke true
+                if (appState.content.playlist?.length) this.loadTrack(0, false);
             },
             loadTrack(index, autoplay = true) {
                 const track = appState.content.playlist[index];
@@ -175,8 +176,15 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             play() {
                 if (!appState.content.playlist?.length) return;
-                elements.audioElement.play();
-                this.updatePlayButton(true);
+                const playPromise = elements.audioElement.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        this.updatePlayButton(true);
+                    }).catch(error => {
+                        console.error("Autoplay gagal:", error);
+                        this.updatePlayButton(false);
+                    });
+                }
             },
             pause() {
                 elements.audioElement.pause();
@@ -200,6 +208,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const eventHandlers = {
             init() {
+                // Event listener untuk interaksi pertama pengguna
+                const onFirstInteraction = () => {
+                    if (appState.hasInteracted) return;
+                    appState.hasInteracted = true;
+                    if (elements.audioElement.paused) {
+                        musicPlayer.play();
+                    }
+                    // Hapus event listener setelah interaksi pertama
+                    document.body.removeEventListener('click', onFirstInteraction);
+                    document.body.removeEventListener('touchstart', onFirstInteraction);
+                    document.body.removeEventListener('scroll', onFirstInteraction);
+                };
+                
+                document.body.addEventListener('click', onFirstInteraction);
+                document.body.addEventListener('touchstart', onFirstInteraction);
+                document.body.addEventListener('scroll', onFirstInteraction);
+
                 elements.photoGallery.addEventListener('click', (e) => {
                     if (e.target.tagName === 'IMG') {
                         elements.lightbox.style.display = 'block';
@@ -228,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
             async init() {
                 try {
                     const response = await fetch('content.json');
-                    if (!response.ok) throw new Error('Failed to load content');
+                    if (!response.ok) throw new Error('Gagal memuat content.json');
                     appState.content = await response.json();
                     
                     const params = new URLSearchParams(window.location.search);
@@ -236,7 +261,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     const color = decodeURIComponent(params.get('color') || '#ff6b9d');
                     utils.updateThemeColor(color);
                     
-                    // Inisialisasi semua konten visual dulu
                     utils.createBgParticles();
                     contentRenderer.renderTimeline();
                     contentRenderer.renderGallery();
@@ -247,29 +271,32 @@ document.addEventListener('DOMContentLoaded', () => {
                     utils.updateScrollProgress();
                     utils.triggerConfetti();
 
-                    // Siapkan teks, tapi jangan langsung animasikan
                     const age = new Date().getFullYear() - parseInt(year, 10);
                     const greeting1 = appState.content.personalGreeting;
                     const greeting2 = `yang ke-${age}! 🎉`;
                     const personalMessage = appState.content.personalMessage;
                     const signature = appState.content.personalSignature;
 
-                    // Mulai animasi teks secara berurutan
                     await utils.typewriter(elements.greetingLine1, greeting1, 100);
                     await utils.typewriter(elements.greetingLine2, greeting2, 120);
                     
-                    // Beri jeda sebelum pesan pribadi muncul
                     await new Promise(resolve => setTimeout(resolve, 300));
                     
                     await utils.typewriter(elements.personalMessage, personalMessage, 30);
 
-                    // Tampilkan signature setelah semua animasi teks selesai
                     elements.personalSignature.textContent = signature;
                     elements.personalSignature.style.opacity = 1;
 
+                    // Mencoba autoplay setelah animasi selesai
+                    setTimeout(() => {
+                        if (!appState.hasInteracted) {
+                             musicPlayer.play();
+                        }
+                    }, 500);
+
                 } catch (error) {
-                    console.error('Error initializing app:', error);
-                    document.body.innerHTML = `<div style="display: flex; justify-content: center; align-items: center; height: 100vh; text-align: center; color: var(--text-light); font-family: 'Poppins', sans-serif; padding: 1rem;"><div><h1>😔 Oops! Terjadi Kesalahan</h1><p>Tidak dapat memuat konten website. Pastikan file <strong>content.json</strong> ada di folder yang sama.</p><button onclick="location.reload()" style="margin-top: 1rem; padding: 0.5rem 1rem; background: var(--accent-color); color: white; border: none; border-radius: 5px; cursor: pointer;">🔄 Coba Lagi</button></div></div>`;
+                    console.error('Error saat inisialisasi aplikasi:', error);
+                    document.body.innerHTML = `<div style="display: flex; justify-content: center; align-items: center; height: 100vh; text-align: center; color: var(--text-light); font-family: 'Poppins', sans-serif; padding: 1rem;"><div><h1>😔 Oops! Terjadi Kesalahan</h1><p>Tidak dapat memuat konten website. Pastikan file <strong>content.json</strong> ada dan path di dalamnya sudah benar.</p><button onclick="location.reload()" style="margin-top: 1rem; padding: 0.5rem 1rem; background: var(--accent-color); color: white; border: none; border-radius: 5px; cursor: pointer;">🔄 Coba Lagi</button></div></div>`;
                 }
             }
         };
