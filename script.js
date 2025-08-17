@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const musicPlayer = {
             init() {
-                if (appState.content.playlist?.length) this.loadTrack(0, false);
+                if (appState.content.playlist?.length) this.loadTrack(0, true); // Diubah ke true
             },
             loadTrack(index, autoplay = true) {
                 const track = appState.content.playlist[index];
@@ -266,9 +266,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Tampilkan signature setelah semua animasi teks selesai
                     elements.personalSignature.textContent = signature;
                     elements.personalSignature.style.opacity = 1;
-
-                    // Mulai musik setelah jeda singkat
-                    setTimeout(() => musicPlayer.play(), 500);
 
                 } catch (error) {
                     console.error('Error initializing app:', error);

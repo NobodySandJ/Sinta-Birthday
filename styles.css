@@ -345,9 +345,13 @@ main {
 }
 
 .gallery-grid img {
-    width: 100%; height: 250px; object-fit: cover;
-    border-radius: 15px; box-shadow: 0 10px 30px var(--shadow-color);
-    transition: var(--transition); cursor: pointer;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    transition: var(--transition);
+    cursor: pointer;
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
