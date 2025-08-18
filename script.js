@@ -30,11 +30,40 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         giftBox.addEventListener('click', () => {
+            const welcomeScreen = document.getElementById('welcome-screen');
+            const loadingScreen = document.getElementById('loading-screen');
+
+            // Fade out welcome screen
+            welcomeScreen.style.opacity = '0';
+            welcomeScreen.style.transform = 'scale(0.9)';
+
+            setTimeout(() => {
+                welcomeScreen.style.display = 'none';
+                
+                // Fade in loading screen
+                loadingScreen.style.display = 'flex';
+                setTimeout(() => {
+                    loadingScreen.style.opacity = '1';
+                }, 50);
+
+            }, 500); // Match this with CSS transition duration
+
             const selectedYear = yearSlider.value;
             const selectedColorElement = themeOptions.querySelector('.selected');
             const selectedColor = selectedColorElement.dataset.color;
             const encodedColor = encodeURIComponent(selectedColor);
-            window.location.href = `ucapan.html?year=${selectedYear}&color=${encodedColor}`;
+            
+            const nextPageUrl = `ucapan.html?year=${selectedYear}&color=${encodedColor}`;
+
+            // Preload the audio
+            const audioToPreload = new Audio('assets/audio/JKT48 - Namida Surprise (cut).mp3'); // Ganti dengan lagu pertama
+            
+            audioToPreload.addEventListener('canplaythrough', () => {
+                // Once the audio can play through, navigate to the next page
+                window.location.href = nextPageUrl;
+            }, { once: true });
+
+            audioToPreload.load();
         });
 
         const initialColor = themeOptions.querySelector('.selected').dataset.color;
