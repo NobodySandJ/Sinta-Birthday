@@ -7,9 +7,19 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎀</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Pacifico&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body class="with-player">
+
+    <div id="play-overlay">
+        <div class="play-button-container">
+            <p>Sentuh untuk memulai kejutan!</p>
+            <button id="start-btn" aria-label="Mulai">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 5V19L19 12L8 5Z" fill="currentColor"/></svg>
+            </button>
+        </div>
+    </div>
+
     <audio id="audio-element" preload="auto"></audio>
     <div class="progress-bar" id="progress-bar"></div>
 
@@ -71,7 +81,7 @@
         <span class="lightbox-close" aria-label="Close">&times;</span>
         <img class="lightbox-content" id="lightbox-img" alt="Full size image">
     </div>
-    
+
     <script src="script.js"></script>
 </body>
 </html>

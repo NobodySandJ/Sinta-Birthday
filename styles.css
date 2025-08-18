@@ -42,7 +42,7 @@ body.with-player {
     height: 100%;
     z-index: -1;
     overflow: hidden;
-    background: 
+    background:
         radial-gradient(circle at 20% 50%, rgba(255, 107, 157, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, rgba(78, 205, 196, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 40% 80%, rgba(138, 43, 226, 0.1) 0%, transparent 50%);
@@ -203,10 +203,70 @@ body.with-player {
     50% { opacity: 1; }
 }
 
+/* --- Loading Screen & Start Button --- */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease;
+    z-index: 1000;
+}
+
+.loading-content {
+    text-align: center;
+    color: var(--text-light);
+}
+
+.loading-content p {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+#start-surprise-btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 5px 20px var(--glow-color);
+    transition: all 0.3s ease;
+    margin-top: 2rem;
+}
+
+#start-surprise-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px var(--glow-color);
+}
+
+/* Logic for hiding/showing loading elements */
+#loading-elements {
+    display: block;
+}
+#start-surprise-btn {
+    display: none;
+}
+
+.loading-content.loading-done #loading-elements {
+    display: none;
+}
+.loading-content.loading-done #start-surprise-btn {
+    display: block;
+}
+
 
 /* --- Enhanced Main Content --- */
 #main-content {
-    opacity: 0; 
+    opacity: 0;
     animation: fadeInMain 1.5s ease-in forwards;
 }
 
@@ -239,7 +299,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: -2rem 0; 
+    margin: -2rem 0;
 }
 
 /* --- Enhanced Message Card --- */
@@ -490,21 +550,6 @@ footer {
     background: rgba(0, 0, 0, 0.7);
 }
 
-/* --- Loading Animation --- */
-.loading-dots { display: inline-flex; gap: 4px; }
-.loading-dots span {
-    width: 8px; height: 8px; border-radius: 50%;
-    background-color: var(--accent-color);
-    animation: loading-bounce 1.4s ease-in-out infinite both;
-}
-.loading-dots span:nth-child(1) { animation-delay: -0.32s; }
-.loading-dots span:nth-child(2) { animation-delay: -0.16s; }
-
-@keyframes loading-bounce {
-    0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
-    40% { transform: scale(1); opacity: 1; }
-}
-
 /* --- Scroll Animations --- */
 .fade-in-up {
     opacity: 0; transform: translateY(30px);
@@ -527,169 +572,60 @@ footer {
     51%, 100% { opacity: 0; }
 }
 
-
 /* ======================================================= */
-/* --- Enhanced Responsive Design (KODE REVISI MOBILE) --- */
+/* --- Enhanced Responsive Design --- */
 /* ======================================================= */
 
 @media (max-width: 768px) {
-    /* Perbaikan untuk halaman index.html agar full-screen */
     #welcome-screen {
-        padding: 0; /* Hapus padding agar kartu bisa penuh */
+        padding: 0;
     }
-    
+
     .welcome-content {
         width: 100%;
         height: 100%;
-        max-width: 100%; /* Menimpa max-width desktop */
+        max-width: 100%;
         margin: 0;
-        border-radius: 0; /* Hapus sudut melengkung */
+        border-radius: 0;
         display: flex;
         flex-direction: column;
-        justify-content: center; /* Konten di tengah vertikal */
+        justify-content: center;
         padding: 2rem 1.5rem;
     }
 
-    .welcome-content h2 {
-        font-size: 1.6rem;
-    }
-    #year-display {
-        font-size: 3rem;
-    }
-    .theme-option {
-        width: 35px;
-        height: 35px;
-    }
+    .welcome-content h2 { font-size: 1.6rem; }
+    #year-display { font-size: 3rem; }
+    .theme-option { width: 35px; height: 35px; }
 
-    /* Perbaikan untuk halaman ucapan.html */
     main {
         padding: 1.5rem 1rem 8rem;
         gap: 3rem;
     }
-    .section-title {
-        font-size: 2.2rem;
-    }
-    #personal-greeting {
-        font-size: 2rem;
-        min-height: 6rem;
-    }
-    #personal-message {
-        font-size: 1rem;
-    }
-    .message-card {
-        padding: 2rem;
-    }
-    .timeline::after {
-        left: 31px;
-    }
-    .timeline-item {
-        width: 100%;
-        padding-left: 70px;
-        padding-right: 25px;
-    }
-    .timeline-item.left,
-    .timeline-item.right {
-        left: 0;
-        text-align: left;
-    }
-    .timeline-item.right::after,
-    .timeline-item.left::after {
-        left: 15px;
-    }
-    .gallery-grid,
-    .video-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    .player-container {
-        padding: 0 15px;
-        gap: 15px;
-    }
-    #player-artwork {
-        width: 50px;
-        height: 50px;
-    }
-    .player-info {
-        margin-left: 10px;
-    }
-    #player-artist {
-        display: none;
-    }
-    .player-controls {
-        gap: 15px;
-    }
-    #play-pause-btn {
-        width: 50px;
-        height: 50px;
-    }
-    #prev-btn,
-    #next-btn {
-        width: 40px;
-        height: 40px;
-    }
-    .lightbox-close {
-        top: 10px;
-        right: 20px;
-        font-size: 40px;
-        width: 50px;
-        height: 50px;
-    }
+    .section-title { font-size: 2.2rem; }
+    #personal-greeting { font-size: 2rem; min-height: 6rem; }
+    #personal-message { font-size: 1rem; }
+    .message-card { padding: 2rem; }
+    .timeline::after { left: 31px; }
+    .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+    .timeline-item.left, .timeline-item.right { left: 0; text-align: left; }
+    .timeline-item.right::after, .timeline-item.left::after { left: 15px; }
+    .gallery-grid, .video-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .player-container { padding: 0 15px; gap: 15px; }
+    #player-artwork { width: 50px; height: 50px; }
+    .player-info { margin-left: 10px; }
+    #player-artist { display: none; }
+    .player-controls { gap: 15px; }
+    #play-pause-btn { width: 50px; height: 50px; }
+    #prev-btn, #next-btn { width: 40px; height: 40px; }
+    .lightbox-close { top: 10px; right: 20px; font-size: 40px; width: 50px; height: 50px; }
 }
 
 @media (max-width: 480px) {
-    .welcome-content {
-        padding: 1.5rem;
-    }
-    #lottie-gift-container dotlottie-wc {
-        width: 200px !important;
-        height: 200px !important;
-    }
-    .section-title {
-        font-size: 1.8rem;
-    }
-    #personal-greeting {
-        font-size: 1.6rem;
-    }
-    .timeline-content {
-        padding: 20px;
-    }
-    #music-player {
-        height: 80px;
-    }
-    body.with-player {
-        padding-bottom: 80px;
-    }
-}
-
-/* --- Print Styles --- */
-@media print {
-    #background-animation, #music-player, .lightbox, .confetti, .bg-particle { display: none !important; }
-    body { background: white; color: black; }
-    .welcome-screen { display: none; }
-    #main-content { opacity: 1; }
-}
-
-#loading-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--background-dark);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 0.5s ease;
-    z-index: 1000;
-}
-
-.loading-content {
-    text-align: center;
-    color: var(--text-light);
-}
-
-.loading-content p {
-    margin-top: 1rem;
-    font-size: 1.2rem;
-    font-family: 'Poppins', sans-serif;
+    .welcome-content { padding: 1.5rem; }
+    #lottie-gift-container dotlottie-wc { width: 200px !important; height: 200px !important; }
+    .section-title { font-size: 1.8rem; }
+    #personal-greeting { font-size: 1.6rem; }
+    .timeline-content { padding: 20px; }
+    #music-player { height: 80px; }
+    body.with-player { padding-bottom: 80px; }
 }

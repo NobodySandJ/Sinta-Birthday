@@ -7,19 +7,37 @@
             "year": "26 April 2024",
             "title": "Awal Mula Cerita Baru",
             "description": "Hari di mana kamu resmi diumumkan sebagai member baru Refresh Breeze! Sebuah awal dari perjalanan yang luar biasa.",
-            "image": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDQwMCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiMzNDM0NTIiIHJ4PSIxMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjYjBiMGM0IiBmb250LXNpemU9IjI0IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiI+Foto Pengumuman Member</text></svg>"
+            "image": "assets/img/newmem.jpg"
         },
         {
-            "year": "28 April 2024",
-            "title": "Debut Panggung Pertama",
-            "description": "Untuk pertama kalinya, kamu tampil memukau di event 'Onymyouji No Matsuri' Kediri. Energi dan senyummu langsung mencuri perhatian!",
-            "image": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDQwMCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiMzNDM0NTIiIHJ4PSIxMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjYjBiMGM0IiBmb250LXNpemU9IjI0IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiI+Foto Debut di Kediri</text></svg>"
+            "year": "17 Mei 2024",
+            "title": "Penampilan Perdana",
+            "description": "Momen tak terlupakan saat kamu dan Refresh Breeze pertama kali tampil memukau di atas panggung.",
+            "image": "assets/img/cleo.jpg"
         },
         {
-            "year": "21 Juni 2025",
-            "title": "Bersinar di Chibicon!",
-            "description": "Penampilan terbaikmu dengan ishou (kostum) baru yang keren di panggung Chibicon Day 1. Kamu benar-benar bersinar!",
-            "image": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDQwMCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiMzNDM0NTIiIHJ4PSIxMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjYjBiMGM0IiBmb250LXNpemU9IjI0IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiI+Foto di Chibicon</text></svg>"
+            "year": "Sekarang",
+            "title": "Merayakan Hari Spesialmu",
+            "description": "Hari ini, kita semua merayakanmu! Teruslah bersinar dan menginspirasi banyak orang dengan energimu.",
+            "image": "assets/img/imoet.jpg"
+        }
+    ],
+    "galleryImages": [
+        "assets/img/monocrom 1.jpg",
+        "assets/img/monocrom 2.jpg",
+        "assets/img/imoet.jpg",
+        "assets/img/cleo.jpg",
+        "assets/img/suka.jpg",
+        "assets/img/newmem.jpg"
+    ],
+    "videos": [
+        {
+            "title": "Chibicon!",
+            "url": "https://www.youtube.com/embed/S3-Vz92nBwM"
+        },
+        {
+            "title": "Chibicon!",
+            "url": "https://www.youtube.com/embed/w7pGc2f-B-s"
         }
     ],
     "playlist": [
@@ -30,36 +48,16 @@
             "artwork": "assets/img/Namidajkt.jpg"
         },
         {
-            "title": "#kusangatsuka", 
+            "title": "#kusangatsuka",
             "artist": "JKT48",
-            "path": "assets/audio/KuSangatsuka - JKT48.mp3",
+            "path": "assets/audio/KuSangatSuka - JKT48.mp3",
             "artwork": "assets/img/suka.jpg"
         },
         {
-            "title": "Tarot", 
+            "title": "Tarot",
             "artist": "Feast",
             "path": "assets/audio/Tarot - Feast  (cut).mp3",
             "artwork": "assets/img/tarot.jpg"
-        }
-    ],
-    "galleryImages": [
-        "assets/img/monocrom 1.jpg",
-        "assets/img/cleo.jpg",
-        "assets/img/monocrom 2.jpg",
-        "assets/img/imoet.jpg"
-    ],
-    "videos": [
-        {
-            "title": "Momen Panggung Terbaik",
-            "url": "https://www.youtube.com/embed/dQw4w9WgXcQ"
-        },
-        {
-            "title": "Kompilasi Momen Lucu", 
-            "url": "https://www.youtube.com/embed/L_jWHffIx5E"
-        },
-        {
-            "title": "Pesan Spesial",
-            "url": "https://www.youtube.com/embed/Vq_g-4G5sJ8"
         }
     ]
 }

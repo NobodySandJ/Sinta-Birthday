@@ -10,6 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const giftBox = document.getElementById('lottie-gift-container');
         const root = document.documentElement;
 
+        const loadingScreen = document.getElementById('loading-screen');
+        const loadingContent = loadingScreen.querySelector('.loading-content');
+        const startButton = document.getElementById('start-surprise-btn');
+
         const updateThemeColor = (color) => {
             root.style.setProperty('--accent-color', color);
             const glowColor = color + '40';
@@ -31,37 +35,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
         giftBox.addEventListener('click', () => {
             const welcomeScreen = document.getElementById('welcome-screen');
-            const loadingScreen = document.getElementById('loading-screen');
-
-            // Fade out welcome screen
             welcomeScreen.style.opacity = '0';
             welcomeScreen.style.transform = 'scale(0.9)';
 
             setTimeout(() => {
                 welcomeScreen.style.display = 'none';
-                
-                // Fade in loading screen
                 loadingScreen.style.display = 'flex';
                 setTimeout(() => {
                     loadingScreen.style.opacity = '1';
                 }, 50);
-
-            }, 500); // Match this with CSS transition duration
+            }, 500);
 
             const selectedYear = yearSlider.value;
-            const selectedColorElement = themeOptions.querySelector('.selected');
-            const selectedColor = selectedColorElement.dataset.color;
+            const selectedColor = themeOptions.querySelector('.selected').dataset.color;
             const encodedColor = encodeURIComponent(selectedColor);
-            
             const nextPageUrl = `ucapan.html?year=${selectedYear}&color=${encodedColor}`;
 
-            // Preload the audio
-            const audioToPreload = new Audio('assets/audio/JKT48 - Namida Surprise (cut).mp3'); // Ganti dengan lagu pertama
-            
-            audioToPreload.addEventListener('canplaythrough', () => {
-                // Once the audio can play through, navigate to the next page
+            const onAudioReady = () => {
+                // Tambahkan class 'loading-done' untuk mengubah tampilan via CSS
+                loadingContent.classList.add('loading-done');
+            };
+
+            startButton.addEventListener('click', () => {
                 window.location.href = nextPageUrl;
-            }, { once: true });
+            });
+            
+            const audioToPreload = new Audio('assets/audio/JKT48 - Namida Surprise (cut).mp3');
+            
+            audioToPreload.addEventListener('canplaythrough', onAudioReady, { once: true });
+            
+            // Fallback: Jika audio lambat, tetap tampilkan tombol setelah 5 detik
+            setTimeout(onAudioReady, 5000);
 
             audioToPreload.load();
         });
@@ -75,7 +79,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===================================================================
     if (document.getElementById('main-content') && !document.getElementById('welcome-screen')) {
         
-        const appState = { 
+        // Hapus #play-overlay karena sudah tidak diperlukan
+        const playOverlay = document.getElementById('play-overlay');
+        if (playOverlay) {
+            playOverlay.remove();
+        }
+
+        const appState = {
             content: {}
         };
 
@@ -99,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
             playerArtist: document.getElementById('player-artist'),
             playPauseBtn: document.getElementById('play-pause-btn'),
             prevBtn: document.getElementById('prev-btn'),
-            nextBtn: document.getElementById('next-btn')
+            nextBtn: document.getElementById('next-btn'),
         };
 
         const utils = {
@@ -266,15 +276,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     const response = await fetch('content.json');
                     if (!response.ok) throw new Error('Gagal memuat content.json');
                     appState.content = await response.json();
-                    
+
                     const params = new URLSearchParams(window.location.search);
                     const year = params.get('year') || 2006;
                     const color = decodeURIComponent(params.get('color') || '#ff6b9d');
                     utils.updateThemeColor(color);
-                    
-                    // Prioritaskan musik
+
                     musicPlayer.init();
-                    musicPlayer.play();
+                    musicPlayer.play(); // Langsung putar
 
                     utils.createBgParticles();
                     contentRenderer.renderTimeline();
@@ -293,9 +302,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     await utils.typewriter(elements.greetingLine1, greeting1, 100);
                     await utils.typewriter(elements.greetingLine2, greeting2, 120);
-                    
+
                     await new Promise(resolve => setTimeout(resolve, 300));
-                    
+
                     await utils.typewriter(elements.personalMessage, personalMessage, 30);
 
                     elements.personalSignature.textContent = signature;

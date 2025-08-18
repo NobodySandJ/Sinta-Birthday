@@ -7,7 +7,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎀</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Pacifico&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
 
@@ -31,11 +31,11 @@
                     </div>
                 </div>
                 <div id="lottie-gift-container">
-                     <dotlottie-wc 
-                        src="https://lottie.host/b5289d12-8de3-4b08-bce2-32c94b642be0/kt2iTQozjP.lottie" 
-                        style="width: 250px; height: 250px; cursor: pointer;" 
-                        speed="1" 
-                        autoplay 
+                     <dotlottie-wc
+                        src="https://lottie.host/b5289d12-8de3-4b08-bce2-32c94b642be0/kt2iTQozjP.lottie"
+                        style="width: 250px; height: 250px; cursor: pointer;"
+                        speed="1"
+                        autoplay
                         loop>
                     </dotlottie-wc>
                 </div>
@@ -46,14 +46,17 @@
 
     <div id="loading-screen" style="display: none; opacity: 0;">
         <div class="loading-content">
-            <dotlottie-wc 
-                src="https://lottie.host/0c1f5a6b-9b4b-4b8b-87b7-1c3905f0e1b6/VMAa1g2Z8E.lottie" 
-                style="width: 250px; height: 250px;" 
-                speed="1" 
-                autoplay 
-                loop>
-            </dotlottie-wc>
-            <p>Memuat kejutan...</p>
+            <div id="loading-elements">
+                <dotlottie-wc
+                    src="https://lottie.host/0c1f5a6b-9b4b-4b8b-87b7-1c3905f0e1b6/VMAa1g2Z8E.lottie"
+                    style="width: 250px; height: 250px;"
+                    speed="1"
+                    autoplay
+                    loop>
+                </dotlottie-wc>
+                <p>Memuat kejutan...</p>
+            </div>
+            <button id="start-surprise-btn">Mulai ✨</button>
         </div>
     </div>
 
