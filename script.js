@@ -47,8 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('main-content') && !document.getElementById('welcome-screen')) {
         
         const appState = { 
-            content: {},
-            hasInteracted: false // Lacak interaksi pengguna
+            content: {}
         };
 
         const elements = {
@@ -208,23 +207,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const eventHandlers = {
             init() {
-                // Event listener untuk interaksi pertama pengguna
-                const onFirstInteraction = () => {
-                    if (appState.hasInteracted) return;
-                    appState.hasInteracted = true;
-                    if (elements.audioElement.paused) {
-                        musicPlayer.play();
-                    }
-                    // Hapus event listener setelah interaksi pertama
-                    document.body.removeEventListener('click', onFirstInteraction);
-                    document.body.removeEventListener('touchstart', onFirstInteraction);
-                    document.body.removeEventListener('scroll', onFirstInteraction);
-                };
-                
-                document.body.addEventListener('click', onFirstInteraction);
-                document.body.addEventListener('touchstart', onFirstInteraction);
-                document.body.addEventListener('scroll', onFirstInteraction);
-
                 elements.photoGallery.addEventListener('click', (e) => {
                     if (e.target.tagName === 'IMG') {
                         elements.lightbox.style.display = 'block';
@@ -261,11 +243,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     const color = decodeURIComponent(params.get('color') || '#ff6b9d');
                     utils.updateThemeColor(color);
                     
+                    // Prioritaskan musik
+                    musicPlayer.init();
+                    musicPlayer.play();
+
                     utils.createBgParticles();
                     contentRenderer.renderTimeline();
                     contentRenderer.renderGallery();
                     contentRenderer.renderVideos();
-                    musicPlayer.init();
                     eventHandlers.init();
                     utils.observeElements();
                     utils.updateScrollProgress();
@@ -286,13 +271,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     elements.personalSignature.textContent = signature;
                     elements.personalSignature.style.opacity = 1;
-
-                    // Mencoba autoplay setelah animasi selesai
-                    setTimeout(() => {
-                        if (!appState.hasInteracted) {
-                             musicPlayer.play();
-                        }
-                    }, 500);
 
                 } catch (error) {
                     console.error('Error saat inisialisasi aplikasi:', error);
