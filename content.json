@@ -26,27 +26,27 @@
         {
             "title": "Namida Suprise",
             "artist": "JKT48",
-            "path": "/assets/audio/JKT48 - Namida Surprise (cut).mp3",
-            "artwork": "/assets/img/Namidajkt.jpg"
+            "path": "assets/audio/JKT48 - Namida Surprise (cut).mp3",
+            "artwork": "assets/img/Namidajkt.jpg"
         },
         {
             "title": "#kusangatsuka", 
             "artist": "JKT48",
-            "path": "/assets/audio/KuSangatsuka - JKT48.mp3",
-            "artwork": "/assets/img/suka.jpg"
+            "path": "assets/audio/KuSangatsuka - JKT48.mp3",
+            "artwork": "assets/img/suka.jpg"
         },
         {
             "title": "Tarot", 
             "artist": "Feast",
-            "path": "/assets/audio/Tarot - Feast  (cut).mp3",
-            "artwork": "/assets/img/tarot.jpg"
+            "path": "assets/audio/Tarot - Feast  (cut).mp3",
+            "artwork": "assets/img/tarot.jpg"
         }
     ],
     "galleryImages": [
-        "/assets/img/monocrom 1.jpg",
-        "/assets/img/cleo.jpg",
-        "/assets/img/monocrom 2.jpg",
-        "/assets/img/imoet.jpg"
+        "assets/img/monocrom 1.jpg",
+        "assets/img/cleo.jpg",
+        "assets/img/monocrom 2.jpg",
+        "assets/img/imoet.jpg"
     ],
     "videos": [
         {
