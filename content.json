@@ -10,25 +10,25 @@
             "image": "assets/img/newmem.jpg"
         },
         {
-            "year": "17 Mei 2024",
-            "title": "Penampilan Perdana",
-            "description": "Momen tak terlupakan saat kamu dan Refresh Breeze pertama kali tampil memukau di atas panggung.",
-            "image": "assets/img/cleo.jpg"
+            "year": "21 Juni 2025",
+            "title": "perfrom di Chibicon day 1",
+            "description": "Momen tak terlupakan saat kamu dan Refresh Breeze tampil memukau di atas panggung dengan ishou baru.",
+            "image": "assets/img/cb1.jpg"
         },
         {
-            "year": "Sekarang",
+            "year": "Sekarang 12 September 2025",
             "title": "Merayakan Hari Spesialmu",
             "description": "Hari ini, kita semua merayakanmu! Teruslah bersinar dan menginspirasi banyak orang dengan energimu.",
-            "image": "assets/img/imoet.jpg"
+            "image": "assets/img/Happy birhday (1).png"
         }
     ],
     "galleryImages": [
         "assets/img/monocrom 1.jpg",
+        "assets/img/cb1.jpg",
         "assets/img/monocrom 2.jpg",
         "assets/img/imoet.jpg",
         "assets/img/cleo.jpg",
-        "assets/img/suka.jpg",
-        "assets/img/newmem.jpg"
+        "assets/img/sintaaa.jpg"
     ],
     "videos": [
         {
