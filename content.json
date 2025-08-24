@@ -33,11 +33,11 @@
     "videos": [
         {
             "title": "Chibicon!",
-            "url": "https://www.youtube.com/embed/S3-Vz92nBwM"
+            "url": "assets/l1.mp4"
         },
         {
             "title": "Chibicon!",
-            "url": "https://www.youtube.com/embed/w7pGc2f-B-s"
+            "url": "assets/p1.mp4"
         }
     ],
     "playlist": [
