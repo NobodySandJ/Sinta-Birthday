@@ -406,7 +406,7 @@ main {
 
 .gallery-grid img {
     width: 100%;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 4 / 5;
     object-fit: cover;
     border-radius: 15px;
     box-shadow: 0 10px 30px var(--shadow-color);

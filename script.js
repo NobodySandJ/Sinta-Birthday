@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 elements.photoGallery.innerHTML = appState.content.galleryImages.map((src, i) => `<img src="${src}" alt="Foto Kenangan ${i + 1}" loading="lazy">`).join('');
             },
             renderVideos() {
-                elements.videoList.innerHTML = appState.content.videos.map(video => `<div class="video-wrapper"><iframe src="${video.url}" title="${video.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`).join('');
+                elements.videoList.innerHTML = appState.content.videos.map(video => `<div class="video-wrapper"><iframe src="${video.url}" title="${video.title}" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`).join('');
             }
         };
 
