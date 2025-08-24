@@ -59,11 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
             startButton.addEventListener('click', () => {
                 window.location.href = nextPageUrl;
             });
-            
+
             const audioToPreload = new Audio('assets/audio/JKT48 - Namida Surprise (cut).mp3');
-            
+
             audioToPreload.addEventListener('canplaythrough', onAudioReady, { once: true });
-            
+
             // Fallback: Jika audio lambat, tetap tampilkan tombol setelah 5 detik
             setTimeout(onAudioReady, 5000);
 
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // LOGIKA UNTUK HALAMAN ucapan.html (HALAMAN UCAPAN)
     // ===================================================================
     if (document.getElementById('main-content') && !document.getElementById('welcome-screen')) {
-        
+
         // Hapus #play-overlay karena sudah tidak diperlukan
         const playOverlay = document.getElementById('play-overlay');
         if (playOverlay) {
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             updateThemeColor(color) {
                 elements.root.style.setProperty('--accent-color', color);
-                const colorMap = {'#ff6b9d':'#4ecdc4', '#4ecdc4':'#ff6b9d', '#a88679':'#ff6b9d', '#e91e63':'#4ecdc4', '#673ab7':'#4ecdc4', '#00bcd4':'#ff6b9d', '#4caf50':'#ff6b9d', '#ff9800':'#4ecdc4'};
+                const colorMap = { '#ff6b9d': '#4ecdc4', '#4ecdc4': '#ff6b9d', '#a88679': '#ff6b9d', '#e91e63': '#4ecdc4', '#673ab7': '#4ecdc4', '#00bcd4': '#ff6b9d', '#4caf50': '#ff6b9d', '#ff9800': '#4ecdc4' };
                 elements.root.style.setProperty('--accent-secondary', colorMap[color] || '#4ecdc4');
                 elements.root.style.setProperty('--glow-color', color + '40');
             }
@@ -194,7 +194,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 elements.photoGallery.innerHTML = appState.content.galleryImages.map((src, i) => `<img src="${src}" alt="Foto Kenangan ${i + 1}" loading="lazy">`).join('');
             },
             renderVideos() {
-                elements.videoList.innerHTML = appState.content.videos.map(video => `<div class="video-wrapper"><iframe src="${video.url}" title="${video.title}" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`).join('');
+                elements.videoList.innerHTML = appState.content.videos.map(video => {
+        const isPortrait = video.orientation === 'portrait';
+        const wrapperClass = `video-wrapper ${isPortrait ? 'portrait' : ''}`;
+
+        // Menggunakan tag <video> sebagai ganti <iframe>
+        return `<div class="${wrapperClass.trim()}">
+                    <video src="${video.url}" title="${video.title}" controls playsinline loop muted></video>
+                </div>`;
+    }).join('');
             }
         };
 
