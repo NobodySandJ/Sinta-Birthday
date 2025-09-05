@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             audioToPreload.addEventListener('canplaythrough', onAudioReady, { once: true });
 
             // Fallback: Jika audio lambat, tetap tampilkan tombol setelah 5 detik
-            setTimeout(onAudioReady, 5000);
+            setTimeout(onAudioReady, 12000);
 
             audioToPreload.load();
         });
