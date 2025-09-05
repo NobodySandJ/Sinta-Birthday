@@ -114,19 +114,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const utils = {
             async typewriter(element, text, delay = 80) {
-                element.innerHTML = '';
-                element.classList.add('typing');
-                for (let i = 0; i < text.length; i++) {
-                    element.innerHTML = text.substring(0, i + 1) + '<span class="cursor">|</span>';
-                    await new Promise(resolve => setTimeout(resolve, delay));
-                }
-                setTimeout(() => {
-                    element.innerHTML = text;
-                    element.classList.remove('typing');
-                }, 500);
-            },
+    element.innerHTML = ''; // Kosongkan elemen
+    const textNode = document.createTextNode('');
+    const cursorSpan = document.createElement('span');
+    cursorSpan.className = 'cursor';
+    cursorSpan.textContent = '|';
+
+    element.appendChild(textNode);
+    element.appendChild(cursorSpan); // Tambahkan kursor sekali saja
+    element.classList.add('typing');
+
+    for (let i = 0; i < text.length; i++) {
+        textNode.nodeValue += text[i];
+        await new Promise(resolve => setTimeout(resolve, delay));
+    }
+
+    // Hapus kursor setelah selesai
+    setTimeout(() => {
+        element.classList.remove('typing');
+        cursorSpan.remove();
+    }, 500);
+},
             triggerConfetti() {
-                const confettiCount = 150;
+                const confettiCount = 50;
                 const colors = ['#ff6b9d', '#4ecdc4', '#feca57', '#ff9ff3', '#54a0ff'];
                 for (let i = 0; i < confettiCount; i++) {
                     const confetti = document.createElement('div');
@@ -139,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     setTimeout(() => confetti?.remove(), 8000);
                 }
             },
-            createBgParticles(count = 35) {
+            createBgParticles(count = 15) {
                 const shapes = ['💖', '✨', '🌟', '🎶', '🎉', '♍', '🎀', '🎂'];
                 for (let i = 0; i < count; i++) {
                     const particle = document.createElement('div');
