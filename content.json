@@ -28,7 +28,12 @@
         "assets/img/monocrom 2.jpg",
         "assets/img/imoet.jpg",
         "assets/img/cleo.jpg",
-        "assets/img/sintaaa.jpg"
+        "assets/img/ohasae1.jpg",
+        "assets/img/ohase2.jpg",
+        "assets/img/4.png",
+        "assets/img/ohase3.jpg",
+        "assets/img/3.png"
+        
     ],
     "videos": [
         {
@@ -55,10 +60,16 @@
             "artwork": "assets/img/suka.jpg"
         },
         {
-            "title": "Tarot",
-            "artist": "Feast",
-            "path": "assets/audio/Tarot - Feast  (cut).mp3",
-            "artwork": "assets/img/tarot.jpg"
+            "title": "Bersepedah Berdua",
+            "artist": "JKT48",
+            "path": "assets/audio/JKT48 - Bersepedah Berdua.mp3",
+            "artwork": "assets/img/pajamadrive.png"
+        },
+        {
+            "title": "mejikuhibiniu",
+            "artist": "Tenxi, Suisei Jemsii",
+            "path": "assets/audio/Tenxi, Suisei Jemsii - mejikuhibiniu.mp3",
+            "artwork": "assets/img/tenxicover.jpg"
         }
     ]
 }
