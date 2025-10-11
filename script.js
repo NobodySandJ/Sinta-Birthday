@@ -51,74 +51,63 @@ document.addEventListener('DOMContentLoaded', () => {
             const encodedColor = encodeURIComponent(selectedColor);
             const nextPageUrl = `ucapan.html?year=${selectedYear}&color=${encodedColor}`;
 
-            // --- FUNGSI PRELOADING ASET ---
+            // --- FUNGSI PRELOADING ASET PRIORITAS ---
 
-            // Fungsi untuk memuat satu aset dan mengembalikannya sebagai Promise
             const preloadAsset = (url) => {
                 return new Promise((resolve, reject) => {
-                    // Cek ekstensi file untuk menentukan tipe aset
-                    const isVideo = /\.(mp4|webm)$/.test(url);
                     const isAudio = /\.(mp3|wav|ogg)$/.test(url);
-
-                    if (isVideo || isAudio) {
-                        // Untuk audio dan video, gunakan fetch untuk memastikan diunduh
-                        fetch(url)
-                            .then(response => {
-                                if (!response.ok) throw new Error(`Gagal memuat ${url}`);
-                                return response.blob();
-                            })
-                            .then(() => resolve(url))
-                            .catch(() => reject(url));
-                    } else {
-                        // Untuk gambar
+                    if (isAudio) {
+                        const audio = new Audio();
+                        audio.src = url;
+                        // Cukup sampai 'canplaythrough' untuk memastikan audio siap diputar
+                        audio.addEventListener('canplaythrough', () => resolve(url), { once: true });
+                        audio.onerror = () => reject(`Gagal memuat audio: ${url}`);
+                    } else { // Asumsikan sisanya adalah gambar
                         const img = new Image();
                         img.src = url;
                         img.onload = () => resolve(url);
-                        img.onerror = () => reject(url);
+                        img.onerror = () => reject(`Gagal memuat gambar: ${url}`);
                     }
                 });
             };
 
-            // Fungsi utama untuk memuat semua aset dari content.json
-            const preloadAllAssets = async () => {
+            const preloadPriorityAssets = async () => {
                 try {
                     // 1. Ambil daftar aset dari content.json
                     const response = await fetch('content.json');
                     if (!response.ok) throw new Error('Gagal memuat content.json');
                     const content = await response.json();
 
-                    // 2. Kumpulkan semua URL aset menjadi satu array
-                    const assetUrls = [
+                    // 2. Kumpulkan aset prioritas: 1 lagu utama + semua gambar
+                    const priorityAssets = [
+                        'assets/audio/JKT48 - Namida Surprise (cut).mp3', // Lagu utama
                         ...content.galleryImages,
-                        ...content.timelineItems.map(item => item.image).filter(Boolean), // Filter item tanpa gambar
-                        ...content.videos.map(video => video.url),
-                        ...content.playlist.map(track => track.path),
-                        ...content.playlist.map(track => track.artwork),
-                        'assets/video_edit.mp4' // Tambahkan aset lain yang mungkin di-hardcode di HTML
+                        ...content.timelineItems.map(item => item.image).filter(Boolean), // Gambar dari timeline
+                        ...content.playlist.map(track => track.artwork), // Artwork dari semua lagu
                     ];
                     
-                    // Hapus URL duplikat
-                    const uniqueAssetUrls = [...new Set(assetUrls)];
+                    // Hapus duplikat
+                    const uniquePriorityAssets = [...new Set(priorityAssets)];
 
-                    // 3. Buat array of promises untuk setiap aset yang akan di-preload
-                    const promises = uniqueAssetUrls.map(url => preloadAsset(url));
+                    // 3. Buat array of promises hanya untuk aset prioritas
+                    const promises = uniquePriorityAssets.map(url => preloadAsset(url));
 
-                    // 4. Tunggu semua aset selesai diunduh
+                    // 4. Tunggu aset prioritas selesai diunduh
                     await Promise.all(promises);
                     
-                    console.log('Semua aset berhasil dimuat!');
+                    console.log('Aset prioritas (lagu utama dan gambar) berhasil dimuat!');
 
                 } catch (error) {
-                    console.error('Terjadi kesalahan saat memuat aset:', error);
-                    // Tetap lanjutkan meskipun ada error, browser mungkin masih bisa memuatnya nanti dari cache
+                    console.error('Terjadi kesalahan saat memuat aset prioritas:', error);
+                    // Tetap lanjutkan meskipun ada error
                 } finally {
-                    // 5. Tampilkan tombol "Mulai" setelah semua proses selesai (baik berhasil maupun gagal)
+                    // 5. Tampilkan tombol "Mulai" setelah semua aset prioritas selesai
                     loadingContent.classList.add('loading-done');
                 }
             };
 
-            // Panggil fungsi untuk mulai memuat semua aset
-            preloadAllAssets();
+            // Panggil fungsi untuk mulai memuat aset prioritas
+            preloadPriorityAssets();
             
             // --- AKHIR FUNGSI PRELOADING ---
 
@@ -126,7 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.location.href = nextPageUrl;
             });
         });
-
 
         const initialColor = themeOptions.querySelector('.selected').dataset.color;
         updateThemeColor(initialColor);
@@ -137,7 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===================================================================
     if (document.getElementById('main-content') && !document.getElementById('welcome-screen')) {
 
-        // Hapus #play-overlay karena sudah tidak diperlukan
         const playOverlay = document.getElementById('play-overlay');
         if (playOverlay) {
             playOverlay.remove();
@@ -172,14 +159,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const utils = {
             async typewriter(element, text, delay = 80) {
-                element.innerHTML = ''; // Kosongkan elemen
+                element.innerHTML = '';
                 const textNode = document.createTextNode('');
                 const cursorSpan = document.createElement('span');
                 cursorSpan.className = 'cursor';
                 cursorSpan.textContent = '|';
 
                 element.appendChild(textNode);
-                element.appendChild(cursorSpan); // Tambahkan kursor sekali saja
+                element.appendChild(cursorSpan);
                 element.classList.add('typing');
 
                 for (let i = 0; i < text.length; i++) {
@@ -187,7 +174,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     await new Promise(resolve => setTimeout(resolve, delay));
                 }
 
-                // Hapus kursor setelah selesai
                 setTimeout(() => {
                     element.classList.remove('typing');
                     cursorSpan.remove();
