@@ -51,8 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const encodedColor = encodeURIComponent(selectedColor);
             const nextPageUrl = `ucapan.html?year=${selectedYear}&color=${encodedColor}`;
 
-            // --- FUNGSI PRELOADING ASET PRIORITAS ---
-
             const preloadAsset = (url) => {
                 return new Promise((resolve, reject) => {
                     const isAudio = /\.(mp3|wav|ogg)$/.test(url);
@@ -61,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         audio.src = url;
                         audio.addEventListener('canplaythrough', () => resolve(url), { once: true });
                         audio.onerror = () => reject(`Gagal memuat audio: ${url}`);
-                    } else { // Asumsikan sisanya adalah gambar
+                    } else {
                         const img = new Image();
                         img.src = url;
                         img.onload = () => resolve(url);
@@ -82,12 +80,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         ...content.timelineItems.map(item => item.image).filter(Boolean),
                         ...content.playlist.map(track => track.artwork),
                     ];
-                    
+
                     const uniquePriorityAssets = [...new Set(priorityAssets)];
                     const promises = uniquePriorityAssets.map(url => preloadAsset(url));
 
                     await Promise.all(promises);
-                    
+
                     console.log('Aset prioritas (lagu utama dan gambar) berhasil dimuat!');
 
                 } catch (error) {
@@ -98,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             preloadPriorityAssets();
-            
+
             startButton.addEventListener('click', () => {
                 window.location.href = nextPageUrl;
             });
@@ -114,9 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('main-content') && !document.getElementById('welcome-screen')) {
 
         const playOverlay = document.getElementById('play-overlay');
-        if (playOverlay) {
-            playOverlay.remove();
-        }
+        const startBtn = document.getElementById('start-btn');
 
         const appState = {
             content: {}
@@ -221,7 +217,6 @@ document.addEventListener('DOMContentLoaded', () => {
             renderTimeline() {
                 elements.timelineContainer.innerHTML = appState.content.timelineItems.map((item, index) => {
                     const side = index % 2 === 0 ? 'left' : 'right';
-                    // --- PERUBAHAN: Menghapus loading="lazy" ---
                     const imageHtml = item.image ? `<img src="${item.image}" alt="${item.title}" class="timeline-image">` : '';
                     return `
                         <div class="timeline-item ${side}">
@@ -234,7 +229,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }).join('');
             },
             renderGallery() {
-                // --- PERUBAHAN: Menghapus loading="lazy" ---
                 elements.photoGallery.innerHTML = appState.content.galleryImages.map((src, i) => `<img src="${src}" alt="Foto Kenangan ${i + 1}">`).join('');
             },
             renderVideos() {
@@ -270,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     playPromise.then(() => {
                         this.updatePlayButton(true);
                     }).catch(error => {
-                        console.error("Autoplay gagal:", error);
+                        console.error("Gagal memulai audio:", error);
                         this.updatePlayButton(false);
                     });
                 }
@@ -334,7 +328,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     utils.updateThemeColor(color);
 
                     musicPlayer.init();
-                    musicPlayer.play();
 
                     utils.createBgParticles();
                     contentRenderer.renderTimeline();
@@ -343,7 +336,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     eventHandlers.init();
                     utils.observeElements();
                     utils.updateScrollProgress();
-                    utils.triggerConfetti();
 
                     const age = new Date().getFullYear() - parseInt(year, 10);
                     const greeting1 = appState.content.personalGreeting;
@@ -351,15 +343,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     const personalMessage = appState.content.personalMessage;
                     const signature = appState.content.personalSignature;
 
-                    await utils.typewriter(elements.greetingLine1, greeting1, 100);
-                    await utils.typewriter(elements.greetingLine2, greeting2, 120);
+                    // Event listener untuk tombol play utama
+                    startBtn.addEventListener('click', async () => {
+                        // Sembunyikan overlay
+                        playOverlay.style.opacity = '0';
+                        setTimeout(() => playOverlay.style.display = 'none', 500);
 
-                    await new Promise(resolve => setTimeout(resolve, 300));
+                        // Putar musik dan tampilkan konfeti
+                        musicPlayer.play();
+                        utils.triggerConfetti();
 
-                    await utils.typewriter(elements.personalMessage, personalMessage, 30);
-
-                    elements.personalSignature.textContent = signature;
-                    elements.personalSignature.style.opacity = 1;
+                        // Jalankan animasi mengetik
+                        await utils.typewriter(elements.greetingLine1, greeting1, 100);
+                        await utils.typewriter(elements.greetingLine2, greeting2, 120);
+                        await new Promise(resolve => setTimeout(resolve, 300));
+                        await utils.typewriter(elements.personalMessage, personalMessage, 30);
+                        elements.personalSignature.textContent = signature;
+                        elements.personalSignature.style.opacity = 1;
+                    }, { once: true }); // { once: true } agar event hanya berjalan sekali
 
                 } catch (error) {
                     console.error('Error saat inisialisasi aplikasi:', error);
