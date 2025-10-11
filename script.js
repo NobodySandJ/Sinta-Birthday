@@ -59,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (isAudio) {
                         const audio = new Audio();
                         audio.src = url;
-                        // Cukup sampai 'canplaythrough' untuk memastikan audio siap diputar
                         audio.addEventListener('canplaythrough', () => resolve(url), { once: true });
                         audio.onerror = () => reject(`Gagal memuat audio: ${url}`);
                     } else { // Asumsikan sisanya adalah gambar
@@ -73,44 +72,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const preloadPriorityAssets = async () => {
                 try {
-                    // 1. Ambil daftar aset dari content.json
                     const response = await fetch('content.json');
                     if (!response.ok) throw new Error('Gagal memuat content.json');
                     const content = await response.json();
 
-                    // 2. Kumpulkan aset prioritas: 1 lagu utama + semua gambar
                     const priorityAssets = [
-                        'assets/audio/JKT48 - Namida Surprise (cut).mp3', // Lagu utama
+                        'assets/audio/JKT48 - Namida Surprise (cut).mp3',
                         ...content.galleryImages,
-                        ...content.timelineItems.map(item => item.image).filter(Boolean), // Gambar dari timeline
-                        ...content.playlist.map(track => track.artwork), // Artwork dari semua lagu
+                        ...content.timelineItems.map(item => item.image).filter(Boolean),
+                        ...content.playlist.map(track => track.artwork),
                     ];
                     
-                    // Hapus duplikat
                     const uniquePriorityAssets = [...new Set(priorityAssets)];
-
-                    // 3. Buat array of promises hanya untuk aset prioritas
                     const promises = uniquePriorityAssets.map(url => preloadAsset(url));
 
-                    // 4. Tunggu aset prioritas selesai diunduh
                     await Promise.all(promises);
                     
                     console.log('Aset prioritas (lagu utama dan gambar) berhasil dimuat!');
 
                 } catch (error) {
                     console.error('Terjadi kesalahan saat memuat aset prioritas:', error);
-                    // Tetap lanjutkan meskipun ada error
                 } finally {
-                    // 5. Tampilkan tombol "Mulai" setelah semua aset prioritas selesai
                     loadingContent.classList.add('loading-done');
                 }
             };
 
-            // Panggil fungsi untuk mulai memuat aset prioritas
             preloadPriorityAssets();
             
-            // --- AKHIR FUNGSI PRELOADING ---
-
             startButton.addEventListener('click', () => {
                 window.location.href = nextPageUrl;
             });
@@ -233,7 +221,8 @@ document.addEventListener('DOMContentLoaded', () => {
             renderTimeline() {
                 elements.timelineContainer.innerHTML = appState.content.timelineItems.map((item, index) => {
                     const side = index % 2 === 0 ? 'left' : 'right';
-                    const imageHtml = item.image ? `<img src="${item.image}" alt="${item.title}" class="timeline-image" loading="lazy">` : '';
+                    // --- PERUBAHAN: Menghapus loading="lazy" ---
+                    const imageHtml = item.image ? `<img src="${item.image}" alt="${item.title}" class="timeline-image">` : '';
                     return `
                         <div class="timeline-item ${side}">
                             <div class="timeline-content">
@@ -245,7 +234,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }).join('');
             },
             renderGallery() {
-                elements.photoGallery.innerHTML = appState.content.galleryImages.map((src, i) => `<img src="${src}" alt="Foto Kenangan ${i + 1}" loading="lazy">`).join('');
+                // --- PERUBAHAN: Menghapus loading="lazy" ---
+                elements.photoGallery.innerHTML = appState.content.galleryImages.map((src, i) => `<img src="${src}" alt="Foto Kenangan ${i + 1}">`).join('');
             },
             renderVideos() {
                 elements.videoList.innerHTML = appState.content.videos.map(video => {
@@ -344,7 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     utils.updateThemeColor(color);
 
                     musicPlayer.init();
-                    musicPlayer.play(); // Langsung putar musik
+                    musicPlayer.play();
 
                     utils.createBgParticles();
                     contentRenderer.renderTimeline();
