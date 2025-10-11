@@ -16,6 +16,12 @@
             "image": "assets/img/cb1.webp"
         },
         {
+            "year":"5 Oktober 2025",
+            "title":"Guest Star ohayo sekai",
+            "description":"Bisa lihat kamu perfom lagi setelah sekian lama",
+            "image":"assets/img/sinta3.webp"
+        },
+        {
             "year": "Sekarang 12 Oktober 2025",
             "title": "Hari Ini Punya Mu,Hari Spesial 🎉",
             "description": "Pokoknya hari ini full buat ngerayain kamu! Semangat terus dan tebarin terus energi positif kamu itu yaa! 🔥",
@@ -38,12 +44,13 @@
     "videos": [
         {
             "title": "Chibicon!",
-            "url": "assets/l1.mp4"
-        },
-        {
-            "title": "Chibicon!",
             "url": "assets/p1.mp4",
             "orientation": "portrait"
+        },
+        {
+            "title": "Ohase",
+            "url": "assets/Ohasesi.mp4",
+            "orientation": "portrait"            
         }
     ],
     "playlist": [
@@ -52,6 +59,13 @@
             "artist": "JKT48",
             "path": "assets/audio/JKT48 - Namida Surprise (cut).mp3",
             "artwork": "assets/img/Namidajkt.webp"
+        },
+        {
+            "title": "Gassin(sama kamu)",
+            "artist": "Crescendo ",
+            "path": "assets/audio/Crescendo - Gassin (Sama Kamu).mp3",
+            "artwork": "assets/img/gassin.webp"
+
         },
         {
             "title": "#kusangatsuka",
