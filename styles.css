@@ -995,3 +995,13 @@ footer {
         margin: 0 auto;
     }
 }
+
+#video-edit-section .video-grid {
+    display: flex;
+    justify-content: center;
+}
+
+#video-edit-section .video-item {
+    max-width: 480px; /* Opsional: Atur lebar maksimal video agar tidak terlalu besar di layar lebar */
+    width: 100%;
+}
