@@ -7,32 +7,32 @@
             "year": "26 April 2024",
             "title": "Awal Mula Nge-idol,Debut mu",
             "description": "Ini hari pas kamu resmi diumumin jadi member baru Refresh Breeze! Awal dari petualangan seru lo dimulai, kerennn!",
-            "image": "assets/img/newmem.jpg"
+            "image": "assets/img/newmem.webp"
         },
         {
             "year": "21 Juni 2025",
             "title": "Jadi Salah Satu Guest Star Chibicon",
             "description": "Momen pecah banget pas kamu dan member Refresh Breeze lainya perform pake ishou baru. Keren+Imoet parah sih!😆",
-            "image": "assets/img/cb1.jpg"
+            "image": "assets/img/cb1.webp"
         },
         {
             "year": "Sekarang 12 Oktober 2025",
             "title": "Hari Ini Punya Mu,Hari Spesial 🎉",
             "description": "Pokoknya hari ini full buat ngerayain kamu! Semangat terus dan tebarin terus energi positif kamu itu yaa! 🔥",
-            "image": "assets/img/Happy birhday (1).png"
+            "image": "assets/img/Happy birhday (1).webp"
         }
     ],
     "galleryImages": [
-        "assets/img/monocrom 1.jpg",
-        "assets/img/cb1.jpg",
-        "assets/img/monocrom 2.jpg",
-        "assets/img/imoet.jpg",
-        "assets/img/cleo.jpg",
-        "assets/img/ohasae1.jpg",
-        "assets/img/ohase2.jpg",
-        "assets/img/4.png",
-        "assets/img/ohase3.jpg",
-        "assets/img/3.png"
+        "assets/img/monocrom 1.webp",
+        "assets/img/cb1.webp",
+        "assets/img/monocrom 2.webp",
+        "assets/img/imoet.webp",
+        "assets/img/cleo.webp",
+        "assets/img/ohasae1.webp",
+        "assets/img/ohase2.webp",
+        "assets/img/4.webp",
+        "assets/img/ohase3.webp",
+        "assets/img/3.webp"
         
     ],
     "videos": [
@@ -51,25 +51,25 @@
             "title": "Namida Suprise",
             "artist": "JKT48",
             "path": "assets/audio/JKT48 - Namida Surprise (cut).mp3",
-            "artwork": "assets/img/Namidajkt.jpg"
+            "artwork": "assets/img/Namidajkt.webp"
         },
         {
             "title": "#kusangatsuka",
             "artist": "JKT48",
             "path": "assets/audio/KuSangatSuka - JKT48.mp3",
-            "artwork": "assets/img/suka.jpg"
+            "artwork": "assets/img/suka.webp"
         },
         {
             "title": "Bersepedah Berdua",
             "artist": "JKT48",
             "path": "assets/audio/JKT48 - Bersepedah Berdua.mp3",
-            "artwork": "assets/img/pajamadrive.png"
+            "artwork": "assets/img/pajamadrive.webp"
         },
         {
             "title": "mejikuhibiniu",
             "artist": "Tenxi, Suisei Jemsii",
             "path": "assets/audio/Tenxi, Suisei Jemsii - mejikuhibiniu.mp3",
-            "artwork": "assets/img/tenxicover.jpg"
+            "artwork": "assets/img/tenxicover.webp"
         }
     ]
 }
