@@ -51,24 +51,82 @@ document.addEventListener('DOMContentLoaded', () => {
             const encodedColor = encodeURIComponent(selectedColor);
             const nextPageUrl = `ucapan.html?year=${selectedYear}&color=${encodedColor}`;
 
-            const onAudioReady = () => {
-                // Tambahkan class 'loading-done' untuk mengubah tampilan via CSS
-                loadingContent.classList.add('loading-done');
+            // --- FUNGSI PRELOADING ASET ---
+
+            // Fungsi untuk memuat satu aset dan mengembalikannya sebagai Promise
+            const preloadAsset = (url) => {
+                return new Promise((resolve, reject) => {
+                    // Cek ekstensi file untuk menentukan tipe aset
+                    const isVideo = /\.(mp4|webm)$/.test(url);
+                    const isAudio = /\.(mp3|wav|ogg)$/.test(url);
+
+                    if (isVideo || isAudio) {
+                        // Untuk audio dan video, gunakan fetch untuk memastikan diunduh
+                        fetch(url)
+                            .then(response => {
+                                if (!response.ok) throw new Error(`Gagal memuat ${url}`);
+                                return response.blob();
+                            })
+                            .then(() => resolve(url))
+                            .catch(() => reject(url));
+                    } else {
+                        // Untuk gambar
+                        const img = new Image();
+                        img.src = url;
+                        img.onload = () => resolve(url);
+                        img.onerror = () => reject(url);
+                    }
+                });
             };
+
+            // Fungsi utama untuk memuat semua aset dari content.json
+            const preloadAllAssets = async () => {
+                try {
+                    // 1. Ambil daftar aset dari content.json
+                    const response = await fetch('content.json');
+                    if (!response.ok) throw new Error('Gagal memuat content.json');
+                    const content = await response.json();
+
+                    // 2. Kumpulkan semua URL aset menjadi satu array
+                    const assetUrls = [
+                        ...content.galleryImages,
+                        ...content.timelineItems.map(item => item.image).filter(Boolean), // Filter item tanpa gambar
+                        ...content.videos.map(video => video.url),
+                        ...content.playlist.map(track => track.path),
+                        ...content.playlist.map(track => track.artwork),
+                        'assets/video_edit.mp4' // Tambahkan aset lain yang mungkin di-hardcode di HTML
+                    ];
+                    
+                    // Hapus URL duplikat
+                    const uniqueAssetUrls = [...new Set(assetUrls)];
+
+                    // 3. Buat array of promises untuk setiap aset yang akan di-preload
+                    const promises = uniqueAssetUrls.map(url => preloadAsset(url));
+
+                    // 4. Tunggu semua aset selesai diunduh
+                    await Promise.all(promises);
+                    
+                    console.log('Semua aset berhasil dimuat!');
+
+                } catch (error) {
+                    console.error('Terjadi kesalahan saat memuat aset:', error);
+                    // Tetap lanjutkan meskipun ada error, browser mungkin masih bisa memuatnya nanti dari cache
+                } finally {
+                    // 5. Tampilkan tombol "Mulai" setelah semua proses selesai (baik berhasil maupun gagal)
+                    loadingContent.classList.add('loading-done');
+                }
+            };
+
+            // Panggil fungsi untuk mulai memuat semua aset
+            preloadAllAssets();
+            
+            // --- AKHIR FUNGSI PRELOADING ---
 
             startButton.addEventListener('click', () => {
                 window.location.href = nextPageUrl;
             });
-
-            const audioToPreload = new Audio('assets/audio/JKT48 - Namida Surprise (cut).mp3');
-
-            audioToPreload.addEventListener('canplaythrough', onAudioReady, { once: true });
-
-            // Fallback: Jika audio lambat, tetap tampilkan tombol setelah 5 detik
-            setTimeout(onAudioReady, 12000);
-
-            audioToPreload.load();
         });
+
 
         const initialColor = themeOptions.querySelector('.selected').dataset.color;
         updateThemeColor(initialColor);
@@ -114,27 +172,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const utils = {
             async typewriter(element, text, delay = 80) {
-    element.innerHTML = ''; // Kosongkan elemen
-    const textNode = document.createTextNode('');
-    const cursorSpan = document.createElement('span');
-    cursorSpan.className = 'cursor';
-    cursorSpan.textContent = '|';
+                element.innerHTML = ''; // Kosongkan elemen
+                const textNode = document.createTextNode('');
+                const cursorSpan = document.createElement('span');
+                cursorSpan.className = 'cursor';
+                cursorSpan.textContent = '|';
 
-    element.appendChild(textNode);
-    element.appendChild(cursorSpan); // Tambahkan kursor sekali saja
-    element.classList.add('typing');
+                element.appendChild(textNode);
+                element.appendChild(cursorSpan); // Tambahkan kursor sekali saja
+                element.classList.add('typing');
 
-    for (let i = 0; i < text.length; i++) {
-        textNode.nodeValue += text[i];
-        await new Promise(resolve => setTimeout(resolve, delay));
-    }
+                for (let i = 0; i < text.length; i++) {
+                    textNode.nodeValue += text[i];
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                }
 
-    // Hapus kursor setelah selesai
-    setTimeout(() => {
-        element.classList.remove('typing');
-        cursorSpan.remove();
-    }, 500);
-},
+                // Hapus kursor setelah selesai
+                setTimeout(() => {
+                    element.classList.remove('typing');
+                    cursorSpan.remove();
+                }, 500);
+            },
             triggerConfetti() {
                 const confettiCount = 50;
                 const colors = ['#ff6b9d', '#4ecdc4', '#feca57', '#ff9ff3', '#54a0ff'];
@@ -189,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
             renderTimeline() {
                 elements.timelineContainer.innerHTML = appState.content.timelineItems.map((item, index) => {
                     const side = index % 2 === 0 ? 'left' : 'right';
-                    const imageHtml = item.image ? `<img src="${item.image}" alt="${item.title}" class="timeline-image">` : '';
+                    const imageHtml = item.image ? `<img src="${item.image}" alt="${item.title}" class="timeline-image" loading="lazy">` : '';
                     return `
                         <div class="timeline-item ${side}">
                             <div class="timeline-content">
@@ -205,14 +263,13 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             renderVideos() {
                 elements.videoList.innerHTML = appState.content.videos.map(video => {
-        const isPortrait = video.orientation === 'portrait';
-        const wrapperClass = `video-wrapper ${isPortrait ? 'portrait' : ''}`;
+                    const isPortrait = video.orientation === 'portrait';
+                    const wrapperClass = `video-wrapper ${isPortrait ? 'portrait' : ''}`;
 
-        // Menggunakan tag <video> sebagai ganti <iframe>
-        return `<div class="${wrapperClass.trim()}">
-                    <video src="${video.url}" title="${video.title}" controls playsinline loop muted></video>
-                </div>`;
-    }).join('');
+                    return `<div class="${wrapperClass.trim()}">
+                                <video src="${video.url}" title="${video.title}" controls playsinline loop muted></video>
+                            </div>`;
+                }).join('');
             }
         };
 
@@ -301,7 +358,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     utils.updateThemeColor(color);
 
                     musicPlayer.init();
-                    musicPlayer.play(); // Langsung putar
+                    musicPlayer.play(); // Langsung putar musik
 
                     utils.createBgParticles();
                     contentRenderer.renderTimeline();
